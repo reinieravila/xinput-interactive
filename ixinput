@@ -2,7 +2,7 @@
 
 xinput --list | more
 read -p 'Which Device: ' device
-xinput --list-props $device
+xinput --list-props $device | more
 read -p 'Which Property: ' property
 read -p 'What value: ' value
 xinput --set-prop $device $property $value
