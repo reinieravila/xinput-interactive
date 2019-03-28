@@ -1,0 +1,8 @@
+#!/bin/bash
+
+xinput --list | more
+read -p 'Which Device: ' device
+xinput --list-props $device
+read -p 'Which Property: ' property
+read -p 'What value: ' value
+xinput --set-prop $device $property $value
