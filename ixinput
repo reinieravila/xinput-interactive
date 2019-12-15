@@ -1,10 +1,23 @@
 #!/bin/bash
 
 xinput --list | more
-read -p 'Which Device: ' device
+read -p 'Which Device ID (s=search): ' device
+while [ $device = s ]
+do
+  read -p 'Search: ' device
+  xinput --list | grep $device | more
+  read -p 'Which Device ID (s=search): ' device
+done
 
 xinput --list-props $device | more
-read -p 'Which Property: ' property
+read -p 'Which Property ID (s=search): ' property
+while [ $property = s ]
+do
+  read -p 'Search: ' property
+  xinput --list-props $device | grep $device | more
+  read -p 'Which Property ID (s=search): ' property
+done
+
 read -p 'What value: ' value
 
 xinput --set-prop $device $property $value
